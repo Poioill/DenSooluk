@@ -18,7 +18,7 @@ public class GlobalControllerAdvice {
             @AuthenticationPrincipal UserDetails currentUser
     ) {
         if (currentUser != null)
-            return (User) userService.findUserByEmail(currentUser.getUsername());
+            return (User) userService.findUserByPersonalId(currentUser.getUsername());
         return null;
     }
 

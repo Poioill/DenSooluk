@@ -22,27 +22,12 @@ public class UserService {
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
 
-    public void banUser(Long id) {
-        User user = userRepo.findById(id).orElse(null);
-        if (user != null) {
-            if (user.isActive()) {
-                user.setActive(false);
-                log.info("Ban user with id = {}; email: {}", user.getId(), user.getEmail());
-            } else {
-                user.setActive(true);
-                log.info("Unban user with id = {}; email: {}", user.getId(), user.getEmail());
-            }
-        }
-        userRepo.save(user);
-    }
-
     public boolean createUser(User user) {
-        String email = user.getEmail();
-        if (userRepo.findByEmail(email) != null) return false;
-        user.setActive(true);
+        String pid = user.getPersonalId();
+        if (userRepo.findByPersonalId(pid) != null) return false;
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.getRoles().add(Role.USER);
-        log.info("Saving new User with email: {}", email);
+        log.info("Saving new User with pid: {}", pid);
         userRepo.save(user);
         return true;
     }
@@ -51,8 +36,8 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public User findUserByEmail(String email){
-        return userRepo.findByEmail(email);
+    public User findUserByPersonalId(String personalId){
+        return userRepo.findByPersonalId(personalId);
     }
 
     public void changeUserRoles(User user, Map<String, String> form) {
