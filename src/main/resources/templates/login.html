@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="login__sign-in-up">
+    <a href="/login" class="sign sign-border">Log in</a>
+    <a href="/registration" class="sign">Sign up</a>
+</div>
+<h2 class="login-title">Continue your journey in Kyrgyzstan!</h2>
+<form th:action="@{/login}" method="post" class="login__actual-form">
+    <input type="email" name="username" placeholder="Email" class="form-item">
+    <input type="password" name="password" placeholder="Password" class="form-item">
+    <!--
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}">-->
+    <input type="submit"  class="form-btn" value="Enter">
+</form>
+</body>
+</html>

@@ -18,4 +18,9 @@ public class mainPage {
             model.addAttribute("value", introductionRepo.findAll());
             return "home";
     }
+
+    @GetMapping("/check-page")
+    public String check(Model model) {
+        return "check-page";
+    }
 }
