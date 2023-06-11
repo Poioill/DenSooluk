@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping
 @RequiredArgsConstructor
-public class mainPage {
+public class MainPageController {
     private final introductionRepo introductionRepo;
 
     @GetMapping("/")
