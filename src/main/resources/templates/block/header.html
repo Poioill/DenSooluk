@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <a href="/polyclinics">Поликлиники</a>
+    <a href="/services">Услуги</a>
+    <span sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти"/>
+        </form>
+    </span>
+    <span sec:authorize="!isAuthenticated()">
+        <a href="/login">Вход</a>
+    </span>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/admin">Личный кабинет</a>
+    <a sec:authorize="hasAuthority('USER')" href="/admin">Личный кабинет</a>
+    <a sec:authorize="hasAuthority('RECEPTIONIST')" href="/admin">Личный кабинет</a>
+    <a sec:authorize="hasAuthority('STAFF')" href="/admin">Личный кабинет</a>
+</div>

@@ -5,8 +5,59 @@
     <title>Title</title>
 </head>
 <body>
+<div th:insert="block/header :: header"></div>
 <h1 th:text="${value[0].title}"></h1>
 <p th:text="${value[0].subtitle}"></p>
+<br>
+<!--ALL ADVANTAGES-->
+<h3>Какие возможности вам доступны</h3>
+<div th:each="benefit : ${benefits}">
+    <p th:text="${benefit.title}"></p>
+</div>
+
+<!---->
+<!--ABOUT PERSONAL CABINET-->
+<br>
+<div th:each="personal : ${personal}">
+    <h3 th:text="${personal.title}"></h3>
+    <p th:text="${personal.description}"></p>
+    <div th:each="benefits : ${personal.benefits}">
+        <p th:text="${benefits}"></p>
+    </div>
+</div>
+
+<!--==-->
+<!--FEEDBACK -->
+<br>
+<div th:each="feedback : ${feedback}">
+    <h3 th:text="${feedback.title}"></h3>
+    <p th:text="${feedback.subtitle}"></p>
+    <div th:each="feedItem : ${feedback.feedbackItems}">
+        <br>
+        <p th:text="${feedItem.title}"></p>
+        <p th:text="${feedItem.description}"></p>
+        <a href="/">Перейти</a>
+        <br>
+    </div>
+</div>
+
+<!--==-->
+<!--MORE OPPORTUNITY-->
+<br>
+<div th:each="opportunity : ${opportunity}">
+    <h3 th:text="${opportunity.title}"></h3>
+    <div th:each="item : ${opportunity.items}">
+        <p th:text="${item.title}"></p>
+        <p th:text="${item.subtitle}"></p>
+        <div th:each="benefit : ${item.benefits}">
+            <p th:text="${benefit}"></p>
+        </div>
+        <br>
+    </div>
+</div>
+
+<!--==-->
+<br>
 <h3 th:text="${value[0].auth}"></h3>
 <p th:text="${value[0].authSub}"></p>
 <a href="/check-page">Check-page</a>

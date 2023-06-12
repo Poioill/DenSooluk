@@ -1,23 +1,20 @@
 package com.example.denSooluk.Entity.mainPage;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class personalCab {
+public class Benefit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
-    @Column(columnDefinition = "text")
-    private String description;
-    private ArrayList<String> benefits;
 }

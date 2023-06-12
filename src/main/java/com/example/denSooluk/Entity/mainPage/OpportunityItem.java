@@ -5,19 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class introduction {
+@NoArgsConstructor
+public class OpportunityItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
     @Column(columnDefinition = "text")
     private String subtitle;
-    private String auth;
-    @Column(columnDefinition = "text")
-    private String authSub;
+    private ArrayList<String> benefits;
+
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinColumn
+    private MoreOpportunity moreOpportunity;
 }

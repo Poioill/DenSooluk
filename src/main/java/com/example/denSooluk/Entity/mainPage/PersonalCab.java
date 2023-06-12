@@ -6,19 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class moreOpportunity {
+public class PersonalCab {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
-    mappedBy = "moreOpportunity")
-    private List<opportunityItem> items = new ArrayList<>();
+    private String title;
+    @Column(columnDefinition = "text")
+    private String description;
+    private ArrayList<String> benefits;
 }
