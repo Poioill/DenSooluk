@@ -10,7 +10,7 @@
         <a href="/login">Вход</a>
     </span>
     <a sec:authorize="hasAuthority('ADMIN')" href="/admin">Личный кабинет</a>
-    <a sec:authorize="hasAuthority('USER')" href="/admin">Личный кабинет</a>
-    <a sec:authorize="hasAuthority('RECEPTIONIST')" href="/admin">Личный кабинет</a>
-    <a sec:authorize="hasAuthority('STAFF')" href="/admin">Личный кабинет</a>
+    <a sec:authorize="hasAuthority('USER')" href="/user">Личный кабинет</a>
+    <a sec:authorize="hasAuthority('RECEPTIONIST')" href="/reception">Личный кабинет</a>
+    <a sec:authorize="hasAuthority('STAFF')" href="/staff">Личный кабинет</a>
 </div>

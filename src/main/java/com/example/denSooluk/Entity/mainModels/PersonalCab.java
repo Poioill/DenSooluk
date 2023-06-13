@@ -1,23 +1,23 @@
-package com.example.denSooluk.Entity.mainPage;
+package com.example.denSooluk.Entity.mainModels;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FeedbackItems {
+public class PersonalCab {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String title;
     @Column(columnDefinition = "text")
     private String description;
-
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JoinColumn
-    private Feedback feedback;
+    private ArrayList<String> benefits;
 }

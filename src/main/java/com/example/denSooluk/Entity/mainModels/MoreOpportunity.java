@@ -1,4 +1,4 @@
-package com.example.denSooluk.Entity.mainPage;
+package com.example.denSooluk.Entity.mainModels;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,18 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonalCab {
+public class MoreOpportunity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
-    @Column(columnDefinition = "text")
-    private String description;
-    private ArrayList<String> benefits;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+    mappedBy = "moreOpportunity")
+    private List<OpportunityItem> items = new ArrayList<>();
 }

@@ -1,15 +1,18 @@
-package com.example.denSooluk.Entity.mainPage;
+package com.example.denSooluk.Entity.mainModels;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Introduction {
+@NoArgsConstructor
+public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,7 +20,8 @@ public class Introduction {
     private String title;
     @Column(columnDefinition = "text")
     private String subtitle;
-    private String auth;
-    @Column(columnDefinition = "text")
-    private String authSub;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+            mappedBy = "feedback")
+    private List<FeedbackItems> feedbackItems = new ArrayList<>();
 }

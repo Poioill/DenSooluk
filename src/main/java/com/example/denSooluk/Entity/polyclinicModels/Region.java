@@ -1,4 +1,4 @@
-package com.example.denSooluk.Entity.mainPage;
+package com.example.denSooluk.Entity.polyclinicModels;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,17 +8,17 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class MoreOpportunity {
+public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
-    mappedBy = "moreOpportunity")
-    private List<OpportunityItem> items = new ArrayList<>();
+    private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "region")
+    private List<City> cityList = new ArrayList<>();
 }

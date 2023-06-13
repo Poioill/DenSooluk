@@ -1,4 +1,4 @@
-package com.example.denSooluk.Entity.mainPage;
+package com.example.denSooluk.Entity.mainModels;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

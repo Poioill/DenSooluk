@@ -1,6 +1,5 @@
 package com.example.denSooluk.Controllers;
 
-import com.example.denSooluk.Entity.mainPage.MoreOpportunity;
 import com.example.denSooluk.Repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
