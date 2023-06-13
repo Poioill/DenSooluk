@@ -1,0 +1,358 @@
+.green-line {
+width: 100%;
+height: 53px;
+left: calc(50% - 1512px / 2);
+background: #74e694;
+}
+/* ------------------------------------------- */
+.med-service {
+/* width: 90%; */
+justify-content: space-around;
+}
+.med-service__left {
+padding: 7% 0;
+font-family: "Oswald";
+}
+.med-service__left h1 {
+font-family: "Open Sans";
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 50px;
+color: #3230a2;
+font-stretch: 84;
+text-shadow: 10px 10px 10px rgba(50, 48, 161, 0.3);
+}
+.med-service__left p {
+/* width: 429px; */
+margin: 30px 0 30px 0;
+width: 370px;
+}
+.med-service__left a {
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 50px;
+color: #ffffff;
+width: 217px;
+height: 42px;
+background: #ff6392;
+box-shadow: 6px 6px 16px rgba(162, 34, 88, 0.4);
+border-radius: 20px;
+padding: 10px 13px;
+}
+.wrapper {
+width: 70%;
+margin: 0 auto;
+}
+/* ------------------------------------------- */
+.blue-block{
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+color: #d7dff3;
+margin: 0 auto;
+    padding: 70px 0;
+background: #4f56ff;
+margin-bottom: 40px;
+}
+.container {
+margin: 0 auto;
+}
+.blue-block__stars {
+width: 15%;
+margin: 0 auto 40px;
+}
+.mini-block p{
+    color: #D7DFF3;
+    max-width: 420px;
+}
+.info-block {
+display: flex;
+gap: 24px;
+align-items: baseline;
+width: 1200px;
+margin: 0 auto;
+}
+.mini-block h3{
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 30px;
+    color: #ffffff;
+    display: block;
+}
+
+/* ------------------------------------------- */
+/* .advantages h2 {
+font-weight: 600;
+font-size: 26px;
+line-height: 30px;
+text-align: center;
+color: #232784;
+} */
+.advantages__card {
+flex-wrap: wrap;
+width: 60%;
+margin: 0 auto;
+gap: 35px;
+margin-top: 30px;
+margin-bottom: 5%;
+}
+.card {
+width: 190px;
+height: 172px;
+background: #ffffff;
+box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+flex-direction: column;
+padding: 20px 0;
+}
+.card h6 {
+font-weight: 300;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+color: #425a99;
+width: 75%;
+}
+.card img {
+margin-bottom: 20px;
+}
+.card {
+transition: 0.5s;
+}
+.card:hover {
+transform: scale(1.06); /* Увеличиваем масштаб */
+}
+/* ------------------------------------------- */
+.personal-page {
+margin-top: 60px;
+width: 70%;
+margin: 0 auto;
+}
+.personal-page p {
+margin: 15px 0;
+}
+.personal-page h5 {
+display: block;
+margin: 10px 0;
+}
+.personal-page__left {
+    width: 40%;
+}
+.block-title {
+justify-content: start;
+margin-bottom: 20px;
+}
+.block-title h2 {
+margin-left: 10px;
+}
+ul {
+margin-left: 20px;
+}
+li {
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #2e4b75;
+list-style-image: url(./images/svg/greenCircle.svg);
+padding-inline-start: 1ch;
+line-height: 30px;
+}
+.personal-page__right img {
+margin-top: 50px;
+}
+/* ------------------------------------------- */
+.feedback {
+    margin-top: 60px;
+    background: #c1deff;
+    margin-bottom: 30px;
+}
+.feedback-content{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 30px;
+}
+.feedback-middle {
+    background: #fbfcfe;
+    width: 1000px;
+    height: 570px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.feedback-content__left p,
+.feedback-content__right p{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    width: 450px;
+    font-family: 'Open Sans', sans-serif;
+    color: #2e4b75;
+}
+.a {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.c h5, .c p{
+    margin-bottom: 10px;
+}
+.c h5{
+    font-size: 17px;
+}
+.c a{
+    background-color: #FF4789;
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: white;
+}
+.c a:hover{
+    opacity: 0.8;
+    transition-duration: 0.7s;
+}
+/* ------------------------------------------- */
+.polyclinic-list {
+    margin-top: 30px;
+    width: 80%;
+    margin: 50px auto;
+}
+.block-title-pol{
+    width: 80%;
+    margin: 0 auto 20px;
+}
+.staff {
+gap: 20px;
+margin-top: 20px;
+}
+.staff__list {
+width: 306px;
+height: 231px;
+background: #f2f3f8;
+padding: 17px;
+}
+
+.staff__list li {
+list-style-image: url(./images/svg/staffPlus.svg);
+padding-inline-start: 1ch;
+}
+.staff__list p {
+margin: 10px 0;
+}
+.staff__list p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: #2e4b75;
+}
+.staff__image {
+width: 900px;
+height: 231px;
+background: #f2f3f8;
+gap: 7px;
+}
+.staff__image_card{
+    display: flex;
+    height: 180px;
+}
+.staff__image_card:hover{
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.15));
+    transition-duration: 0.7s;
+}
+.staff__image_card__info{
+    width: 160px;
+    background: #ffffff;
+    padding: 5px;
+}
+.staff__image_card__info span{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 10px;
+    color: #d68d2f;
+    margin-bottom: 7px;
+}
+.staff__image_card__info span:nth-last-child(2){
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 10px;
+    color: #191931;
+}
+.staff__image_card__info h4{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #1e1f3a;
+    border-bottom: #F0AAAA solid 1px ;
+    margin-bottom: 7px;
+    padding-bottom: 5px ;
+}
+.staff__image_card__info span:nth-child(4){
+    background-color: #8198ea;
+    color: #d7e0ff;
+    padding: 3px 5px;
+    border-radius: 2px;}
+
+
+.pol__card{
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+}
+.pol__card img{
+    width: 230px;
+}
+.pol__card-info{
+    background-color: white;
+    padding: 5px;
+}
+.pol__card-info span:first-child{
+    color: #25356d;
+    text-align: center;
+}
+.pol__card-info p{
+    font-size: 12px;
+}
+.pol__card:hover{
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.15));
+    transition-duration: 0.7s;
+}
+/* ------------------------------------------- */
+.authorization {
+width: 100%;
+background: #4f56ff;
+margin-top: 50px;
+}
+.authorization__content {
+width: 60%;
+margin: 0 auto;
+padding: 40px 0;
+}
+.authorization__content p {
+margin: 30px 0;
+}
+.authorization__content p,
+.authorization__content a {
+font-weight: 400;
+font-size: 16px;
+line-height: 22px;
+color: #ffffff;
+width: 90%;
+}
+.authorization__content a {
+margin-left: 20px;
+}
+.authorization__button {
+width: 212px;
+height: 60px;
+background: #e4407b;
+border-radius: 3px;
+align-items: center;
+justify-content: space-evenly;
+}
+.authorization__button:hover{
+    opacity: 0.85;
+    transition-duration: 0.7s;
+}
+
+/* ------------------------------------------- */

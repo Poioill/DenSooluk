@@ -18,6 +18,7 @@ public class Region {
     private Long id;
 
     private String name;
+    private String capital;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "region")
     private List<City> cityList = new ArrayList<>();

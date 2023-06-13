@@ -26,7 +26,7 @@ public class UserService {
         String pid = user.getPersonalId();
         if (userRepo.findByPersonalId(pid) != null) return false;
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.getRoles().add(Role.USER);
+        user.getRoles().add(Role.ADMIN);
         log.info("Saving new User with pid: {}", pid);
         userRepo.save(user);
         return true;

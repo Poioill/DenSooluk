@@ -26,9 +26,4 @@ public class MainPageController {
         model.addAttribute("opportunity", moreOpportunityRepo.findAll());
         return "home";
     }
-
-    @GetMapping("/check-page")
-    public String check(Model model) {
-        return "check-page";
-    }
 }

@@ -1,65 +1,173 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME PAGE</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 <body>
 <div th:insert="block/header :: header"></div>
-<h1 th:text="${value[0].title}"></h1>
-<p th:text="${value[0].subtitle}"></p>
-<br>
-<!--ALL ADVANTAGES-->
-<h3>Какие возможности вам доступны</h3>
-<div th:each="benefit : ${benefits}">
-    <p th:text="${benefit.title}"></p>
-</div>
-
-<!---->
-<!--ABOUT PERSONAL CABINET-->
-<br>
-<div th:each="personal : ${personal}">
-    <h3 th:text="${personal.title}"></h3>
-    <p th:text="${personal.description}"></p>
-    <div th:each="benefits : ${personal.benefits}">
-        <p th:text="${benefits}"></p>
+<div class="green-line"></div>
+<section class="med-service wrapper d-flex">
+    <div class="med-service__left">
+        <h1 th:text="${value[0].title}"></h1>
+        <p th:text="${value[0].subtitle}"></p>
+        <a href="/">какие есть возможности</a>
     </div>
-</div>
-
-<!--==-->
-<!--FEEDBACK -->
-<br>
-<div th:each="feedback : ${feedback}">
-    <h3 th:text="${feedback.title}"></h3>
-    <p th:text="${feedback.subtitle}"></p>
-    <div th:each="feedItem : ${feedback.feedbackItems}">
-        <br>
-        <p th:text="${feedItem.title}"></p>
-        <p th:text="${feedItem.description}"></p>
-        <a href="/">Перейти</a>
-        <br>
+    <div class="med-service__right">
+        <img src="/images/img/main-intro.png" alt="doctors-img" />
     </div>
-</div>
-
-<!--==-->
-<!--MORE OPPORTUNITY-->
-<br>
-<div th:each="opportunity : ${opportunity}">
-    <h3 th:text="${opportunity.title}"></h3>
-    <div th:each="item : ${opportunity.items}">
-        <p th:text="${item.title}"></p>
-        <p th:text="${item.subtitle}"></p>
-        <div th:each="benefit : ${item.benefits}">
-            <p th:text="${benefit}"></p>
+</section>
+<section class="blue-block d-flex">
+    <div class="container">
+        <div class="blue-block__stars">
+            <img src="/images/svg/star.svg" alt="" />
         </div>
-        <br>
+        <div class="info-block">
+            <div class="mini-block">
+                <h3>Что это и кто мы чем занимаемся</h3>
+                <p>
+                    цифровое решение мед проблем всех граждан кр. к сожаленданный
+                    портал облегчает гражданам данный портал облегчает гражданам
+                    Кыргызстана получать мед.услуги со стороны государства данный
+                    портал облегчает гражданам Кыргызстана получать мед.услуги со
+                    стороны государстваданный портал облегчает гражданам Кыргызстана
+                    получать мед.услуги со стороны государства
+                </p>
+            </div>
+            <div class="mini-block">
+                <h3>Что вы получите при использованиии</h3>
+                <p>
+                    данный портал облегчает гражданам Кыргызстана получать мед.услуги
+                    со стороны государства. данный портал облегчает гражданам
+                    Кыргызстана получать мед.услуги со стороны государства данный
+                    портал облегчает гражданам Кыргызстана получать мед.услуги со
+                    стороны государства данный портал облегчает гражданам Кыргызстана
+                    получать мед.услуги со стороны государства государства. данный портал облегчает гражданам
+                    Кыргызстана получать мед.услуги со стороны государства данный
+                    портал облегчает гражданам Кыргызстана получать мед.услуги со
+                    стороны государства данный портал облегчает гражданам Кыргызстана
+                    получать мед.услуги со стороны государстваданный портал облегчает
+                    гражданам Кыргызстана получать мед.услуги со стороны государства
+                </p>
+            </div>
+            <div class="mini-block">
+                <h3>Какие есть возможности</h3>
+                <p>
+                    данный портал облегчает гражданам Кыргызстана получать мед.услуги
+                    со стороны государства. данный портал облегчает гражданам
+                    Кыргызстана получать мед.услуги со стороны государства данный
+                    портал облегчает гражданам Кыргызстана получать мед.услуги со
+                    стороны государства данный портал облегчает гражданам Кыргызстана
+                    получать мед.услуги со стороны государстваданный портал облегчает
+                    гражданам Кыргызстана получать мед.услуги со стороны государства
+                </p>
+            </div>
+        </div>
     </div>
-</div>
-
-<!--==-->
-<br>
-<h3 th:text="${value[0].auth}"></h3>
-<p th:text="${value[0].authSub}"></p>
-<a href="/check-page">Check-page</a>
+</section>
+<section class="advantages">
+    <h2>Основные возможности</h2>
+    <div class="advantages__card d-flex">
+        <div th:each="benefit : ${benefits}" class="card d-flex">
+            <h6 th:text="${benefit.title}"></h6>
+            <img src="/images/svg/ben-icon.svg" alt="icon for item" />
+        </div>
+    </div>
+</section>
+<section class="personal-page d-flex">
+    <div th:each="personal : ${personal}" class="personal-page__left">
+        <div class="block-title d-flex">
+            <img src="/images/svg/yes.svg" alt="tick" />
+            <h2 th:text="${personal.title}"></h2>
+        </div>
+        <p th:text="${personal.description}"></p>
+        <h5>Что вам доступно в личном кабинете:</h5>
+        <ul th:each="benefits : ${personal.benefits}">
+            <li th:text="${benefits}"></li>
+        </ul>
+    </div>
+    <div class="personal-page__right">
+        <img src="/images/img/main-section.png" alt="book" />
+    </div>
+</section>
+<section th:each="feedback : ${feedback}" class="feedback">
+    </div>
+    <div class="feedback-middle">
+        <div class="block-title d-flex">
+            <img src="/images/svg/yes.svg" alt="tick" />
+            <h2 th:text="${feedback.title}"></h2>
+        </div>
+        <div class="feedback-content">
+            <div class="feedback-content__left">
+                <p th:text="${feedback.subtitle}"></p>
+            </div>
+            <div class="feedback-content__right">
+                <div th:each="feedItem : ${feedback.feedbackItems}" class="a">
+                    <div class="b">
+                        <img src="/images/svg/feedback-icon.svg" alt="" />
+                    </div>
+                    <div class="c">
+                        <h5 th:text="${feedItem.title}"></h5>
+                        <p th:text="${feedItem.description}"></p>
+                        <a href="/">Перейти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:each="opportunity : ${opportunity}" class="polyclinic-list">
+    <div class="block-title block-title-pol d-flex">
+        <img src="/images/svg/yes.svg" alt="tick" />
+        <h2 th:text="${opportunity.title}"></h2>
+    </div>
+    <div th:each="item : ${opportunity.items}" class="staff d-flex">
+        <div class="staff__list">
+            <h5 th:text="${item.title}"></h5>
+            <p th:text="${item.subtitle}"></p>
+            <ul th:each="benefit : ${item.benefits}">
+                <li th:text="${benefit}"></li>
+            </ul>
+        </div>
+        <div class="staff__image d-flex">
+            <a href="/" class="staff__image_card">
+                <img src="/images/img/main-staff.png" alt="photo of staff" />
+                <div class="staff__image_card__info">
+                    <span>Зам. директор</span>
+                    <h4>Кемелова Алтынай</h4>
+                    <span>Поликлиника №8</span>
+                    <span>г.Бишкек</span>
+                </div>
+            </a>
+            <a href="/" class="staff__image_card">
+                <img src="/images/img/main-staff.png" alt="photo of staff" />
+                <div class="staff__image_card__info">
+                    <span>Зам. директор</span>
+                    <h4>Кемелова Алтынай</h4>
+                    <span>Поликлиника №8</span>
+                    <span>г.Бишкек</span>
+                </div>
+            </a>
+            <a href="">
+                <img src="/images/svg/arrow.svg" alt="arrow" />
+            </a>
+        </div>
+    </div>
+</section>
+<section class="authorization">
+    <div class="authorization__content">
+        <h3 th:text="${value[0].auth}"></h3>
+        <p th:text="${value[0].authSub}"></p>
+        <div class="authorization__button d-flex">
+            <a href="">Авторизоваться</a>
+            <a href="/login"><img src="/images/svg/auth-link.svg" alt="authorization"></a>
+        </div>
+    </div>
+</section>
+<div th:insert="block/footer :: footer"></div>
 </body>
 </html>

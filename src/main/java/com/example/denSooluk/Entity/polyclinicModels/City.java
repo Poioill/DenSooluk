@@ -1,5 +1,6 @@
 package com.example.denSooluk.Entity.polyclinicModels;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,23 @@ public class City {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "city")
     private List<Polyclinic> polyclinics = new ArrayList<>();
+
+    @JsonIgnore
+    public Region getRegion() {
+        return region;
+    }
+
+    @JsonIgnore
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public Long getRegion_id() {
+        return region.getId();
+    }
+
+
+    public String getRegionName() {
+        return region.getName();
+    }
 }

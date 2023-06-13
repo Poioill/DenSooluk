@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<form th:object="${region}" action="/city/add" method="post" enctype="multipart/form-data">
+    <span>Выберите регион: </span>
+    <select name="select" size="1">
+        <option disabled selected value="">--</option>
+        <div th:each="region : ${region}">
+            <option th:value="${region.id}" th:text="${region.name}"></option>
+        </div>
+    </select>
+    <input type="text" name="capital" class="popup__input" placeholder="Name"><br>
+    <button type="submit" class="popup__btn">Добавить</button>
+</form>
+Вот добавленные города
+<div th:each="city : ${city}">
+    Город: <span th:text="${city.capital}"></span> в регионе: <span th:text="${city.region.name}"></span>
+    <br>
+    <br>
+</div>
+<br><br><br>
+<div>
+    <h4>Добавить поликлинку</h4>
+    <form th:object="${city}" action="/polyclinic/add" method="post" enctype="multipart/form-data">
+        <span>Выберите регион: </span>
+        <select name="select" size="1">
+            <option disabled selected value="">--</option>
+            <div th:each="region : ${region}">
+                <option th:value="${region.id}" th:text="${region.name}"></option>
+            </div>
+        </select>
+        <br>
+        <span>Выберите город: </span>
+        <select name="select" size="1">
+            <option disabled selected value="">--</option>
+            <div th:each="city : ${city}">
+                <option th:value="${city.id}" th:text="${city.capital}"></option>
+            </div>
+        </select>
+        <br>
+        <input type="text" name="name" class="popup__input" placeholder="Название поликлиники"><br>
+        <input type="text" name="year" class="popup__input" placeholder="Год открытия"><br>
+        <input type="text" name="phone" class="popup__input" placeholder="Телефон"><br>
+        <input type="text" name="address" class="popup__input" placeholder="Адрес"><br>
+        <input type="text" name="graphic" class="popup__input" placeholder="График работы"><br>
+        <button type="submit" class="popup__btn">Добавить</button>
+    </form>
+<br><br><br>
+    Добавленные поликлиники
+    <div th:each="pol : ${pol}">
+        Поликлиника: <p th:text="${pol.name}"></p>
+        <p th:text="${pol.address}"></p>
+        <p th:text="${pol.year}"></p>
+        <p th:text="${pol.phone}"></p>
+        <p th:text="${pol.graphic}"></p>
+        Область: <p th:text="${pol.city.region.name}"></p>
+        Город: <p th:text="${pol.city.capital}"></p>
+        <br>
+        <br>
+    </div>
+</div>
+</body>
+</html>
