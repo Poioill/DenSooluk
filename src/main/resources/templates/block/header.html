@@ -14,18 +14,17 @@
         <a href="/">Главная</a>
         <a href="/polyclinics">Поликлиники</a>
         <a href="/services">Услуги</a>
-        <span sec:authorize="isAuthenticated()">
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Выйти"/>
-            </form>
-        </span>
-        <span sec:authorize="!isAuthenticated()">
-            <a href="/login">Вход</a>
-        </span>
         <a sec:authorize="hasAuthority('ADMIN')" href="/admin">Личный кабинет</a>
         <a sec:authorize="hasAuthority('USER')" href="/user">Личный кабинет</a>
         <a sec:authorize="hasAuthority('RECEPTIONIST')" href="/reception">Личный кабинет</a>
         <a sec:authorize="hasAuthority('STAFF')" href="/staff">Личный кабинет</a>
-        <a class="logout" href="">Выход</a>
+        <span sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <input class="logout" type="submit" value="Выйти"/>
+            </form>
+        </span>
+        <span sec:authorize="!isAuthenticated()">
+            <a class="logout" href="/login">Вход</a>
+        </span>
     </div>
 </header>

@@ -17,10 +17,12 @@ public class PolyclinicController {
     private final PolyclinicService polyclinicService;
 
     @GetMapping("/polyclinics")
-    public String polyclinics(@RequestParam(name = "name", required = false) String name, Model model){
+    public String polyclinics(@RequestParam(name = "name", required = false) String name,
+                              @RequestParam(name = "selectRegion", required = false) Long regionId,
+                              Model model){
         model.addAttribute("region", regionRepo.findAll());
         model.addAttribute("cities", cityService.listCity());
-        model.addAttribute("pol", polyclinicService.listPolyclinicSearch(name));
+        model.addAttribute("pol", polyclinicService.listPolyclinicSearch(name, regionId));
         return "polyclinic";
     }
 }

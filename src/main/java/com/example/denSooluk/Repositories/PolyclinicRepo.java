@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PolyclinicRepo extends JpaRepository<Polyclinic, Long> {
     List<Polyclinic> findPolyclinicByNameContainingIgnoreCase(String name);
+    List<Polyclinic> findPolyclinicByNameContainingIgnoreCaseAndCityId(String name, Long regionId);
+    List<Polyclinic> findPolyclinicByCityId(Long regionId);
 }

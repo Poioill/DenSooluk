@@ -27,13 +27,6 @@
     <h4>Добавить поликлинку</h4>
     <form th:object="${city}" action="/polyclinic/add" method="post" enctype="multipart/form-data">
         <span>Выберите регион: </span>
-        <select name="select" size="1">
-            <option disabled selected value="">--</option>
-            <div th:each="region : ${region}">
-                <option th:value="${region.id}" th:text="${region.name}"></option>
-            </div>
-        </select>
-        <br>
         <span>Выберите город: </span>
         <select name="select" size="1">
             <option disabled selected value="">--</option>

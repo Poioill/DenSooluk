@@ -31,7 +31,13 @@ public class PolyclinicService {
         return polyclinicRepo.findAll();
     }
 
-    public List<Polyclinic> listPolyclinicSearch(String name) {
+    public List<Polyclinic> listPolyclinicSearch(String name, Long regionId) {
+        if (name != null && regionId != null){
+            return polyclinicRepo.findPolyclinicByNameContainingIgnoreCaseAndCityId(name, regionId);
+        }
+        if (regionId != null){
+            return polyclinicRepo.findPolyclinicByCityId(regionId);
+        }
         if (name != null)
             return polyclinicRepo.findPolyclinicByNameContainingIgnoreCase(name);
         return polyclinicRepo.findAll();
