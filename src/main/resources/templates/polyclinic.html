@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Поликлиники</title>
     <link rel="stylesheet" th:href="@{/css/pol.css}">
     <link rel="stylesheet" th:href="@{/css/base.css}">
@@ -15,11 +15,11 @@
     <form action="/polyclinics" method="get" class="search-wrapper">
         <div class="search__item">
             <input type="text" name="name" placeholder="Найти поликлинику">
-            <img src="/images/svg/search.svg" alt="" />
+            <img src="/images/svg/search.svg" alt=""/>
         </div>
         <select name="selectRegion" size="1" class="filter">
             <option value="" disabled selected>Выберите регион</option>
-            <div  th:each="region : ${region}">
+            <div th:each="region : ${region}">
                 <option th:value="${region.id}" th:text="${region.name}"></option>
             </div>
         </select>
@@ -27,16 +27,18 @@
     </form>
 </div>
 <section class="polyclinics-block">
-    <a th:each="pol : ${pol}" href="/" class="polyclinic__card">
-        <img src="/images/img/main-pol.png" alt="hospital" class="hospital-img" />
-        <div class="polyclinic__card-content">
-            <h6 th:text="${pol.name}"></h6>
-            <div class="mini-card">
-                <span th:text="${pol.city.capital}"></span>
-                <span th:text="${pol.city.region.name}"></span>
+    <div th:each="pol : ${pol}" class="polyclinic__card">
+        <a th:href="'/polyclinics/'+${pol.id}">
+            <img src="/images/img/main-pol.png" alt="hospital" class="hospital-img"/>
+            <div class="polyclinic__card-content">
+                <h6 th:text="${pol.name}"></h6>
+                <div class="mini-card">
+                    <span th:text="${pol.city.capital}"></span>
+                    <span th:text="${pol.city.region.name}"></span>
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
+    </div>
 </section>
 <br><br><br><br><br><br><br><br><br><br>
 <div th:insert="block/footer :: footer"></div>

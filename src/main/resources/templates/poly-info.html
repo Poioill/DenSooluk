@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Поликлиники</title>
+    <link rel="stylesheet" th:href="@{/css/pol.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+</head>
+<body>
+<div th:insert="block/header :: header"></div>
+<!--====-->
+<div>
+    <h5 th:text="'Название: ' + ${pol.name}"></h5>
+    <p th:text="'Год: ' + ${pol.year}"></p>
+    <p th:text="'Адрес: ' + ${pol.address}"></p>
+    <p th:text="'График: ' + ${pol.graphic}"></p>
+    <p th:text="'Телефон: ' + ${pol.phone}"></p>
+    <p th:text="'Город: ' + ${pol.city.capital}"></p>
+    <p th:text="'Регион: ' + ${pol.city.region.name}"></p>
+</div>
+<!--====-->
+<br><br><br><br><br><br><br>
+<div th:insert="block/footer :: footer"></div>
+</body>
+</html>

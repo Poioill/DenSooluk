@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -25,4 +26,12 @@ public class PolyclinicController {
         model.addAttribute("pol", polyclinicService.listPolyclinicSearch(name, regionId));
         return "polyclinic";
     }
+
+    @GetMapping("/polyclinics/{id}")
+    public String polyInfo(@PathVariable Long id, Model model){
+        model.addAttribute("pol", polyclinicService.getPolyclinicById(id));
+        return "poly-info";
+    }
+
+
 }
