@@ -37,7 +37,7 @@ public class PolyclinicService {
 
     public List<Polyclinic> listPolyclinicSearch(String name, Long regionId) {
         if (name != null && regionId != null){
-            return polyclinicRepo.findPolyclinicByNameContainingIgnoreCaseAndCityId(name, regionId);
+            return polyclinicRepo.findPolyclinicByNameContainingIgnoreCaseAndCityRegionId(name, regionId);
         }
         if (regionId != null){
             return polyclinicRepo.findPolyclinicByCityId(regionId);
