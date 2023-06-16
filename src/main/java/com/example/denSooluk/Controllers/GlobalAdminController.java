@@ -5,10 +5,7 @@ import com.example.denSooluk.Entity.User;
 import com.example.denSooluk.Entity.polyclinicModels.City;
 import com.example.denSooluk.Entity.polyclinicModels.Polyclinic;
 import com.example.denSooluk.Repositories.RegionRepo;
-import com.example.denSooluk.Services.CitizenService;
-import com.example.denSooluk.Services.CityService;
-import com.example.denSooluk.Services.PolyclinicService;
-import com.example.denSooluk.Services.UserService;
+import com.example.denSooluk.Services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -24,6 +21,8 @@ public class GlobalAdminController {
     private final PolyclinicService polyclinicService;
     private final UserService userService;
     private final CitizenService citizenService;
+    private final ServicesMedService servicesMedService;
+    private final ServicesItemsService servicesItemsService;
 
     @GetMapping("/admin")
     public String adminPage(@AuthenticationPrincipal User user, Model model) {
@@ -31,6 +30,8 @@ public class GlobalAdminController {
         model.addAttribute("city", cityService.listCity());
         model.addAttribute("users", userService.list());
         model.addAttribute("pol", polyclinicService.listPolyclinic());
+        model.addAttribute("services", servicesItemsService.allServicesItems());
+//        model.addAttribute("services", servicesMedService.listOfServices());
         return "personalPage/globalAdmin";
     }
 

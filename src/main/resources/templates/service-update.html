@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Servac</title>
+</head>
+<body>
+<form method="post" th:object="${service}" enctype="multipart/form-data">
+    <input th:field="${services.title}" type="text" name="title" placeholder="Название раздела">
+    <button type="submit">Сохранить изменения</button>
+</form>
+</body>
+</html>

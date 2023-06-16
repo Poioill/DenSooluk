@@ -80,6 +80,20 @@
         <input type="submit" value="Добавить">
     </form>
 </section>
+<section>
+    <h3>Добавить Услуги</h3>
+    <form th:action="@{/services}" method="post">
+        <input type="text" name="title" placeholder="Название раздела">
+        <input type="submit" value="Добавить">
+    </form>
+    <div th:each="service : ${services}">
+        <p th:text="${service.title}"></p>
+        <a th:href="'/services/' + ${service.id} + '/update'">Изменить</a>
+        <form th:action="'/services/'+${service.id} + '/delete'" method="post">
+            <input type="submit" value="Удалить"/>
+        </form>
+    </div>
+</section>
 <br><br><br><br><br>
 </body>
 </html>
