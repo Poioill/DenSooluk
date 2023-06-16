@@ -24,6 +24,7 @@ public class PolyclinicService {
         polyclinic.setPhone(polyclinic.getPhone());
         polyclinic.setYear(polyclinic.getYear());
         polyclinic.setGraphic(polyclinic.getGraphic());
+        log.info("Saving new Polyclinic. Name: {}; Address: {}", polyclinic.getName(), polyclinic.getAddress());
         polyclinicRepo.save(polyclinic);
     }
 
@@ -33,6 +34,10 @@ public class PolyclinicService {
 
     public Polyclinic getPolyclinicById(Long id){
         return polyclinicRepo.findById(id).orElseThrow();
+    }
+
+    public void deletePolyclinic(Long id){
+        polyclinicRepo.deleteById(id);
     }
 
     public List<Polyclinic> listPolyclinicSearch(String name, Long regionId) {

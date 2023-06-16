@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить данные</title>
+</head>
+<body>
+<form method="post" th:object="${pol}" enctype="multipart/form-data">
+    <select name="selectUpdate" size="1">
+        <option selected th:text="${pol.city.capital}" th:value="${pol.city.id}"></option>
+        <div th:each="city : ${city}">
+            <option th:value="${city.id}" th:text="${city.capital}"></option>
+        </div>
+    </select>
+    <br>
+    <input th:field="${pol.name}" type="text" name="name" placeholder="Название поликлиники"><br>
+    <input th:field="${pol.address}" type="text" name="year" placeholder="Год открытия"><br>
+    <input th:field="${pol.year}" type="text" name="phone" placeholder="Телефон"><br>
+    <input th:field="${pol.phone}" type="text" name="address" placeholder="Адрес"><br>
+    <input th:field="${pol.graphic}" type="text" name="graphic" placeholder="График работы"><br>
+    <button type="submit">Сохранить изменения</button>
+</form>
+</body>
+</html>

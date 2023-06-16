@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
     <title>Admin</title>
 </head>
 <body>
@@ -18,11 +19,10 @@
 </form>
 Вот добавленные города
 <div th:each="city : ${city}">
-    Город: <span th:text="${city.capital}"></span> в регионе: <span th:text="${city.region.name}"></span>
-    <br>
-    <br>
+    Город: <span th:text="${city.capital}"></span> в регионе: <span th:text="${city.region.name}"></span><br>
 </div>
 <br><br><br>
+<hr size="10px">
 <div>
     <h4>Добавить поликлинку</h4>
     <form th:object="${city}" action="/polyclinic/add" method="post" enctype="multipart/form-data">
@@ -35,7 +35,7 @@
             </div>
         </select>
         <br>
-        <input type="text" name="name" class="popup__input" placeholder="Название поликлиники"><br>
+        <input  type="text" name="name" class="popup__input" placeholder="Название поликлиники"><br>
         <input type="text" name="year" class="popup__input" placeholder="Год открытия"><br>
         <input type="text" name="phone" class="popup__input" placeholder="Телефон"><br>
         <input type="text" name="address" class="popup__input" placeholder="Адрес"><br>
@@ -45,6 +45,7 @@
 <br><br><br>
     Добавленные поликлиники
     <div th:each="pol : ${pol}">
+        <hr>
         Поликлиника: <p th:text="${pol.name}"></p>
         <p th:text="${pol.address}"></p>
         <p th:text="${pol.year}"></p>
@@ -52,9 +53,33 @@
         <p th:text="${pol.graphic}"></p>
         Область: <p th:text="${pol.city.region.name}"></p>
         Город: <p th:text="${pol.city.capital}"></p>
-        <br>
-        <br>
+        <a th:href="'/polyclinics/' + ${pol.id} + '/update'">Изменить</a>
+        <form th:action="'/polyclinics/'+${pol.id} + '/delete'" method="post">
+            <input type="submit" value="Удалить"/>
+        </form>
+        <br><hr>
     </div>
 </div>
+<section>
+    <h3>Пользователи: </h3>
+    <div th:each="user : ${users}">
+        <p th:text="${user.personalId}"></p>
+    </div>
+</section>
+
+<section>
+    <form th:action="@{/citizen}" method="post">
+        <input type="text" name="personalId" placeholder="PersonalId">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="lastName" placeholder="Last Name">
+        <select name="selectGender" size="1">
+            <option value="" disabled selected>Выберите пол</option>
+            <option value="Man">М</option>
+            <option value="Woman">Ж</option>
+        </select>
+        <input type="submit" value="Добавить">
+    </form>
+</section>
+<br><br><br><br><br>
 </body>
 </html>
