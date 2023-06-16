@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form method="post" th:object="${services}" enctype="multipart/form-data">
+    <select name="selectServ" size="1">
+        <option selected th:text="${services.servicesItems.title}" th:value="${services.servicesItems.id}"></option>
+        <div th:each="s : ${servItems}">
+            <option th:value="${s.id}" th:text="${s.title}"></option>
+        </div>
+    </select>
+    <input th:field="${services.name}" type="text" name="name" placeholder="Название раздела">
+    <input th:field="${services.about}" type="text" name="about" placeholder="Название раздела">
+    <input th:field="${services.howItWorks}" type="text" name="howItWorks" placeholder="Название раздела">
+    <button type="submit">Сохранить изменения</button>
+</form>
+</body>
+</html>

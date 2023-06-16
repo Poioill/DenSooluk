@@ -31,7 +31,7 @@ public class GlobalAdminController {
         model.addAttribute("users", userService.list());
         model.addAttribute("pol", polyclinicService.listPolyclinic());
         model.addAttribute("services", servicesItemsService.allServicesItems());
-//        model.addAttribute("services", servicesMedService.listOfServices());
+        model.addAttribute("serv", servicesMedService.listOfServices());
         return "personalPage/globalAdmin";
     }
 

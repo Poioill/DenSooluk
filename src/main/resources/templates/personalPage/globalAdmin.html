@@ -81,7 +81,7 @@
     </form>
 </section>
 <section>
-    <h3>Добавить Услуги</h3>
+    <h3>Добавить Раздел Услуг</h3>
     <form th:action="@{/services}" method="post">
         <input type="text" name="title" placeholder="Название раздела">
         <input type="submit" value="Добавить">
@@ -90,6 +90,28 @@
         <p th:text="${service.title}"></p>
         <a th:href="'/services/' + ${service.id} + '/update'">Изменить</a>
         <form th:action="'/services/'+${service.id} + '/delete'" method="post">
+            <input type="submit" value="Удалить"/>
+        </form>
+    </div>
+    <h3>Добавить Услуги</h3>
+    <form th:action="@{/serv}" method="post">
+        <span>Выберите Раздел: </span>
+        <select name="selectServ" size="1">
+            <option disabled selected value="">----</option>
+            <div th:each="service : ${services}">
+                <option th:value="${service.id}" th:text="${service.title}"></option>
+            </div>
+        </select>
+        <input type="text" name="name" placeholder="Название услуги">
+        <input type="text" name="about" placeholder="Об услуге">
+        <input type="text" name="howItWorks" placeholder="Как оно устроено">
+        <input type="submit" value="Добавить">
+    </form>
+    <div th:each="serv : ${serv}">
+        <p th:text="${serv.name}"></p>
+        <p th:text="${serv.howItWorks}"></p>
+        <a th:href="'/serv/' + ${serv.id} + '/update'">Изменить</a>
+        <form th:action="'/serv/'+${serv.id} + '/delete'" method="post">
             <input type="submit" value="Удалить"/>
         </form>
     </div>
