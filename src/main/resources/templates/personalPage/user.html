@@ -5,7 +5,7 @@
     <title>Личный кабинет</title>
 </head>
 <body>
-<form th:object="${/note}" action="/note" method="post" enctype="multipart/form-data">
+<form action="/user/add" method="post" enctype="multipart/form-data">
     <!--    <span>Выберите город: </span>-->
     <!--    <select name="select" size="1">-->
     <!--        <option disabled selected value="">&#45;&#45;</option>-->
@@ -18,8 +18,8 @@
     <textarea name="description" placeholder="Описание"></textarea><br>
     <button type="submit">Добавить</button>
 </form>
-<!--<div th:each="note : ${notes}">-->
-<!--    <p th:text="${note.title}"></p>-->
-<!--</div>-->
+<div th:each="note : ${notes}">
+    <p th:text="${note.title}"></p>
+</div>
 </body>
 </html>

@@ -5,6 +5,8 @@ import com.example.denSooluk.Repositories.CitizenRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CitizenService {
@@ -16,5 +18,9 @@ public class CitizenService {
         citizen.setGender(gender);
         citizen.setPersonalId(citizen.getPersonalId());
         citizenRepo.save(citizen);
+    }
+
+    public List<Citizen> allCitizens(){
+        return citizenRepo.findAll();
     }
 }

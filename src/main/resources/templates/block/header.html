@@ -15,7 +15,7 @@
         <a href="/polyclinics">Поликлиники</a>
         <a href="/services">Услуги</a>
         <a sec:authorize="hasAuthority('ADMIN')" href="/admin">Личный кабинет</a>
-        <a sec:authorize="hasAuthority('USER')" href="/user">Личный кабинет</a>
+        <a sec:authorize="hasAuthority('USER')" th:href="'/user/' + ${currentUser.id}">Личный кабинет</a>
         <a sec:authorize="hasAuthority('RECEPTIONIST')" href="/reception">Личный кабинет</a>
         <a sec:authorize="hasAuthority('STAFF')" href="/staff">Личный кабинет</a>
         <span sec:authorize="isAuthenticated()">

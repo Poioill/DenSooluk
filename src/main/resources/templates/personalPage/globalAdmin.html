@@ -61,13 +61,15 @@
     </div>
 </div>
 <section>
-    <h3>Пользователи: </h3>
-    <div th:each="user : ${users}">
-        <p th:text="${user.personalId}"></p>
+    <h3>Жители: </h3>
+    <div th:each="citizen : ${citizens}">
+        <p th:text="${citizen.personalId}"></p>
+        <p th:text="${citizen.birthDate}"></p>
     </div>
 </section>
 
 <section>
+    Зарегистрировать нового человека-жителя
     <form th:action="@{/citizen}" method="post">
         <input type="text" name="personalId" placeholder="PersonalId">
         <input type="text" name="name" placeholder="Name">
@@ -77,8 +79,33 @@
             <option value="Man">М</option>
             <option value="Woman">Ж</option>
         </select>
+        <input type="text" name="birthPlace" placeholder="Birth Place"/>
+        Выберите дату рождения:
+        <input type="date" name="birthDate"/>
         <input type="submit" value="Добавить">
     </form>
+</section>
+<section>
+    Зарегистрировать жителя в системе
+    <form th:action="@{/registration}" method="post">
+        <select name="personalId" size="1">
+            <option disabled selected value="">Выберите id</option>
+            <div th:each="citizen : ${citizens}">
+                <option th:value="${citizen.id}" th:text="${citizen.personalId}"></option>
+            </div>
+        </select>
+        <input type="password" name="password" placeholder="Password">
+        <select name="selectRole" size="1">
+            <option disabled selected value="">Выберите роль</option>
+            <div th:each="role : ${roles}">
+                <option th:value="${role}" th:text="${role}"></option>
+            </div>
+        </select>
+        <input type="submit" value="Register">
+    </form>
+    <div th:each="user : ${users}">
+        <p th:text="${user.citizen.name}"></p>
+    </div>
 </section>
 <section>
     <h3>Добавить Раздел Услуг</h3>

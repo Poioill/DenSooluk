@@ -1,21 +1,18 @@
 package com.example.denSooluk.Entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Answers {
+@Data
+public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String question;
-    @Column(columnDefinition = "text")
-    private String answer;
+
 }

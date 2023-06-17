@@ -32,6 +32,23 @@
 </section>
 
 <section class="service-choose d-flex">
+<!--    <div class="dropdown" th:each="service : ${services}">-->
+<!--        <button-->
+<!--                class="btn a btn-secondary dropdown-toggle"-->
+<!--                type="button"-->
+<!--                id="dropdownMenuButton"-->
+<!--                data-toggle="dropdown"-->
+<!--                aria-haspopup="true"-->
+<!--                aria-expanded="false"-->
+<!--        >-->
+<!--            <h5 th:text="${service.title}"></h5>-->
+<!--            <img class="arrow-down" src="/images/svg/arrow-service.svg" alt=""/>-->
+<!--        </button>-->
+<!--        <div th:each="serv : ${service.servicesMeds}" class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--            <a th:href="'/serv/' + ${serv.id}" th:text="${serv.name}" class="dropdown-item" href="/cardOfService.html"-->
+<!--            ></a>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="dropdown" th:each="service : ${services}">
         <button
                 class="btn a btn-secondary dropdown-toggle"
@@ -41,12 +58,14 @@
                 aria-haspopup="true"
                 aria-expanded="false"
         >
-            <h5 th:text="${service.title}"></h5>
-            <img class="arrow-down" src="/images/svg/arrow-service.svg" alt=""/>
+            <div class="a d-flex">
+                <h5 th:text="${service.title}"></h5>
+                <img class="arrow-down" src="/images/svg/arrow-service.svg" alt=""/>
+            </div>
+
         </button>
         <div th:each="serv : ${service.servicesMeds}" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a th:href="'/serv/' + ${serv.id}" th:text="${serv.name}" class="dropdown-item" href="/cardOfService.html"
-            ></a>
+            <a class="dropdown-item" th:href="'/serv/' + ${serv.id}" th:text="${serv.name}"></a>
         </div>
     </div>
 </section>

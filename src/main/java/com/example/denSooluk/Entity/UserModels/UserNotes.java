@@ -1,5 +1,6 @@
 package com.example.denSooluk.Entity.UserModels;
 
+import com.example.denSooluk.Entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,4 +19,7 @@ public class UserNotes {
     @Column(columnDefinition = "text")
     private String description;
 
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinColumn
+    private User user;
 }

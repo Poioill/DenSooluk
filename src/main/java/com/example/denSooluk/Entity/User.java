@@ -1,17 +1,15 @@
 package com.example.denSooluk.Entity;
 
 
+import com.example.denSooluk.Entity.UserModels.UserNotes;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @SuppressWarnings("ALL")
 @Entity
@@ -21,8 +19,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
-    @Size(min=14, max=14, message="ИНН должен содержать 14 символов!")
+//    @Size(min=14, max=14, message="ИНН должен содержать 14 символов!")
     private String personalId;
 
     @Column(length = 1000)
@@ -33,6 +30,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+            mappedBy = "user")
+    private List<UserNotes> userNotes = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinColumn
+    private Citizen citizen;
 
     @JsonFormat(pattern = "yyyy-mmmm-dd ")
     @Column(updatable = false)

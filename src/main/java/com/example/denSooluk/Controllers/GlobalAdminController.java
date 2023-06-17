@@ -1,6 +1,7 @@
 package com.example.denSooluk.Controllers;
 
 import com.example.denSooluk.Entity.Citizen;
+import com.example.denSooluk.Entity.Role;
 import com.example.denSooluk.Entity.User;
 import com.example.denSooluk.Entity.polyclinicModels.City;
 import com.example.denSooluk.Entity.polyclinicModels.Polyclinic;
@@ -11,6 +12,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RequestMapping
 @Controller
@@ -26,12 +30,19 @@ public class GlobalAdminController {
 
     @GetMapping("/admin")
     public String adminPage(@AuthenticationPrincipal User user, Model model) {
+        List<Role> roles = new ArrayList<>();
+        roles.add(Role.RECEPTIONIST);
+        roles.add(Role.USER);
+        roles.add(Role.ADMIN);
+        roles.add(Role.STAFF);
         model.addAttribute("region", regionRepo.findAll());
         model.addAttribute("city", cityService.listCity());
-        model.addAttribute("users", userService.list());
+        model.addAttribute("citizens", citizenService.allCitizens());
         model.addAttribute("pol", polyclinicService.listPolyclinic());
         model.addAttribute("services", servicesItemsService.allServicesItems());
         model.addAttribute("serv", servicesMedService.listOfServices());
+        model.addAttribute("roles", roles);
+        model.addAttribute("users", userService.list());
         return "personalPage/globalAdmin";
     }
 

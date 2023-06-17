@@ -35,16 +35,11 @@ public class RegisterController {
 
     @PostMapping("/registration")
     public String createUser(@Valid User user, Model model, BindingResult bindingResult){
-//        if (bindingResult.hasErrors()){
-//            String errorMessage = bindingResult.getFieldError("username").getDefaultMessage();
-//            model.addAttribute("errorMessage", errorMessage);
-//            return "registration";
-//        }
         if (!userService.createUser(user)){
             model.addAttribute("message", "User already exists! Please ");
             return "registration";
         }
-        return "redirect:/login";
+        return "redirect:/admin";
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public String handleValidationExceptions(

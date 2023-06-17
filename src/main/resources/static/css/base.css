@@ -48,6 +48,7 @@ color: #2e4b75;
 header {
 width: 93%;
 padding: 10px 0 10px 0;
+background: #ffffff;
 }
 header a {
 font-family: "Open Sans";
@@ -79,8 +80,12 @@ width: 54%;
 width: 40%;
 }
 /* ------------------------------------------- */
-.footer{
-padding: 95px 430px 97px 160px;
+
+.footer {
+  /* margin-top: 30px; */
+  padding: 95px 430px 97px 160px;
+  background: #FBFCFE;
+  filter: drop-shadow(-4px -4px 10px rgba(0, 0, 0, 0.1));
 }
 .footer span {
 font-family: "Open Sans", sans-serif;
