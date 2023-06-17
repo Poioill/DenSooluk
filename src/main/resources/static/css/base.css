@@ -6,7 +6,6 @@ padding: 0;
 border: 0;
 box-sizing: border-box;
 font-family: 'Open Sans', sans-serif;
-text-decoration: none;
 }
 body {
     background: #fbfcfe;
@@ -57,6 +56,7 @@ font-weight: 400;
 font-size: 14px;
 line-height: 20px;
 color: #3451bc;
+text-decoration:none;
 }
 .logout {
 width: 76px;
@@ -106,7 +106,7 @@ margin-bottom: 20px;
 .address,
 .questions {
 flex-direction: column;
-align-items: flex-start;
+align-items: flex-start !important;
 }
 .questions a {
 font-family: "Open Sans", sans-serif;
@@ -114,6 +114,7 @@ font-weight: 400;
 font-size: 12px;
 line-height: 20px;
 color: #4a4a4a;
+t\
 }
 .questions {
 margin-bottom: 35px;
