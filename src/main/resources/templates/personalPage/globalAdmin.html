@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,6 +6,9 @@
     <title>Admin</title>
 </head>
 <body>
+<div>
+
+</div>
 <form th:object="${region}" action="/city/add" method="post" enctype="multipart/form-data">
     <span>Выберите регион: </span>
     <select name="select" size="1">
@@ -101,15 +98,23 @@
             </div>
         </select>
         <input type="password" name="password" placeholder="Password">
-        <select name="selectRole" size="1">
+        <select id="selectRole" name="selectRole" size="1" onchange="showExtraField()">
             <option disabled selected value="">Выберите роль</option>
             <div th:each="role : ${roles}">
                 <option th:value="${role}" th:text="${role}"></option>
             </div>
         </select>
+        <div id="extraField"></div>
+        <script>
+            function showExtraField() {
+              var role = document.getElementById("selectRole").value;
+              if (role == "STAFF") {
+                document.getElementById("extraField").innerHTML = '<input type="text"  name="extraField" name="job" placeholder="Работа"/>';
+              }
+            }
+        </script>
         <input type="submit" value="Register">
     </form>
-<!--        <p th:text="${users[1].citizen.name}"></p>-->
 </section>
 <section>
     <h3>Добавить Раздел Услуг</h3>
@@ -147,6 +152,12 @@
         </form>
     </div>
 </section>
+<!--  else if (roleId == 2) {-->
+<!--    document.getElementById("extraField").innerHTML = '<input type="text" name="otherExtraField" />';-->
+<!--  }-->
+<!--  else {-->
+<!--    document.getElementById("extraField").innerHTML = '';-->
+<!--  }-->
 <br><br><br><br><br>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.example.denSooluk.Entity;
 
+import com.example.denSooluk.Entity.polyclinicModels.Polyclinic;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,5 +15,8 @@ public class Staff {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    private String job;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinColumn
+    private Polyclinic polyclinic;
 }

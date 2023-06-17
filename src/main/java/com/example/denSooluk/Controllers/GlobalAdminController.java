@@ -43,6 +43,7 @@ public class GlobalAdminController {
         model.addAttribute("serv", servicesMedService.listOfServices());
         model.addAttribute("roles", roles);
         model.addAttribute("users", userService.list());
+        model.addAttribute("usr", user);
         return "personalPage/globalAdmin";
     }
 
