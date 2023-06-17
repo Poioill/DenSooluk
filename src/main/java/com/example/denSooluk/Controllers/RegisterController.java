@@ -1,6 +1,7 @@
 package com.example.denSooluk.Controllers;
 
 
+import com.example.denSooluk.Entity.Role;
 import com.example.denSooluk.Entity.User;
 import com.example.denSooluk.Services.UserService;
 import jakarta.validation.Valid;
@@ -10,10 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,8 +32,9 @@ public class RegisterController {
     }
 
     @PostMapping("/registration")
-    public String createUser(@Valid User user, Model model, BindingResult bindingResult){
-        if (!userService.createUser(user)){
+    public String createUser(@Valid User user, Model model, @RequestParam("personalId") Long personalId,
+                             @RequestParam("selectRole") Role role){
+        if (!userService.createUser(user, personalId, role)){
             model.addAttribute("message", "User already exists! Please ");
             return "registration";
         }

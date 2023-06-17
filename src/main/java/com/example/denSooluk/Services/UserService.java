@@ -1,8 +1,10 @@
 package com.example.denSooluk.Services;
 
 
+import com.example.denSooluk.Entity.Citizen;
 import com.example.denSooluk.Entity.Role;
 import com.example.denSooluk.Entity.User;
+import com.example.denSooluk.Repositories.CitizenRepo;
 import com.example.denSooluk.Repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +23,15 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
+    private final CitizenRepo citizenRepo;
 
-    public boolean createUser(User user) {
+    public boolean createUser(User user, Long personalId, Role role) {
+        Citizen citizen = citizenRepo.findCitizenByPersonalId(personalId);
+        user.setCitizen(citizen);
         String pid = user.getPersonalId();
         if (userRepo.findByPersonalId(pid) != null) return false;
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.getRoles().add(Role.RECEPTIONIST);
+        user.getRoles().add(role);
         log.info("Saving new User with pid: {}", pid);
         userRepo.save(user);
         return true;

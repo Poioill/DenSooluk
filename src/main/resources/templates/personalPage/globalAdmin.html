@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -91,7 +97,7 @@
         <select name="personalId" size="1">
             <option disabled selected value="">Выберите id</option>
             <div th:each="citizen : ${citizens}">
-                <option th:value="${citizen.id}" th:text="${citizen.personalId}"></option>
+                <option th:value="${citizen.personalId}" th:text="${citizen.personalId}"></option>
             </div>
         </select>
         <input type="password" name="password" placeholder="Password">
@@ -103,9 +109,7 @@
         </select>
         <input type="submit" value="Register">
     </form>
-    <div th:each="user : ${users}">
-        <p th:text="${user.citizen.name}"></p>
-    </div>
+<!--        <p th:text="${users[1].citizen.name}"></p>-->
 </section>
 <section>
     <h3>Добавить Раздел Услуг</h3>
