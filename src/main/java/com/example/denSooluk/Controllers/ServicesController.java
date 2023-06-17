@@ -29,7 +29,7 @@ public class ServicesController {
 
     @GetMapping("/serv/{id}")
     public String servicesMore(@PathVariable Long id, Model model){
-        model.addAttribute(servicesMedService.getServById(id));
+        model.addAttribute("serviceInfo", servicesMedService.getServById(id));
         return "serv-info";
     }
 

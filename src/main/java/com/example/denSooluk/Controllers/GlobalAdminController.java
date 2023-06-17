@@ -42,7 +42,6 @@ public class GlobalAdminController {
         return "redirect:/admin";
     }
 
-
     @PostMapping("/citizen")
     public String addCitizen(Model model, Citizen citizen, @RequestParam("selectGender") String gender) {
         citizenService.addCitizen(citizen, gender);

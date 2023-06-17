@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Личный кабинет</title>
 </head>
 <body>
-
+<form th:object="${/note}" action="/note" method="post" enctype="multipart/form-data">
+    <!--    <span>Выберите город: </span>-->
+    <!--    <select name="select" size="1">-->
+    <!--        <option disabled selected value="">&#45;&#45;</option>-->
+    <!--        <div th:each="city : ${city}">-->
+    <!--            <option th:value="${city.id}" th:text="${city.capital}"></option>-->
+    <!--        </div>-->
+    <!--    </select>-->
+    <!--    <br>-->
+    <input type="text" name="title" placeholder="Запись блаблабла"><br>
+    <textarea name="description" placeholder="Описание"></textarea><br>
+    <button type="submit">Добавить</button>
+</form>
+<!--<div th:each="note : ${notes}">-->
+<!--    <p th:text="${note.title}"></p>-->
+<!--</div>-->
 </body>
 </html>

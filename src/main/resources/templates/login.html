@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter</title>
+    <link rel="stylesheet" th:href="@{/css/enter.css}" />
 </head>
 <body>
-<!--sec:authorize="hasAuthority('ADMIN')"-->
-<div class="login__sign-in-up">
-    <a href="/login" class="sign sign-border">Log in</a>
-    <a href="/registration" class="sign sign-border">Sign up</a>
+<!--&lt;!&ndash;sec:authorize="hasAuthority('ADMIN')"&ndash;&gt;-->
+<!--<div class="login__sign-in-up">-->
+<!--    <a href="/login" class="sign sign-border">Log in</a>-->
+<!--    <a href="/registration" class="sign sign-border">Sign up</a>-->
+<!--</div>-->
+<div class="enter d-flex">
+    <div class="enter__left">
+        <img src="/images/svg/enterSvg.svg" alt="fonendoscope" />
+    </div>
+    <div class="enter__right">
+        <form th:action="@{/login}" method="post" class="form d-flex">
+            <h5>Вход</h5>
+            <div class="id">
+                <input type="text" name="personalId" placeholder="PersonalID" maxlength="14">
+                <div class="line"></div>
+            </div>
+            <div class="pasword">
+                <input type="password" name="password" placeholder="Пароль">
+                <div class="line"></div>
+            </div>
+            <input class="button" type="submit" value="Войти">
+        </form>
+    </div>
 </div>
-<h2 class="login-title">Continue your journey in Kyrgyzstan!</h2>
-<form th:action="@{/login}" method="post" class="login__actual-form">
-    <input type="text" name="personalId" placeholder="PersonalID" class="form-item">
-    <input type="password" name="password" placeholder="Password" class="form-item">
-    <input type="submit"  class="form-btn" value="Enter">
-</form>
 </body>
 </html>

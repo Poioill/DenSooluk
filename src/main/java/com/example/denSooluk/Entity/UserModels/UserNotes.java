@@ -16,6 +16,6 @@ public class UserNotes {
 
     private String title;
     @Column(columnDefinition = "text")
-    private String desc;
+    private String description;
 
 }
