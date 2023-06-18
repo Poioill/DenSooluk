@@ -2,23 +2,49 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/update.css}">
     <title>Изменить данные</title>
 </head>
 <body>
-<form method="post" th:object="${pol}" enctype="multipart/form-data">
-    <select name="selectUpdate" size="1">
-        <option selected th:text="${pol.city.capital}" th:value="${pol.city.id}"></option>
-        <div th:each="city : ${city}">
-            <option th:value="${city.id}" th:text="${city.capital}"></option>
-        </div>
-    </select>
-    <br>
-    <input th:field="${pol.name}" type="text" name="name" placeholder="Название поликлиники"><br>
-    <input th:field="${pol.address}" type="text" name="year" placeholder="Год открытия"><br>
-    <input th:field="${pol.year}" type="text" name="phone" placeholder="Телефон"><br>
-    <input th:field="${pol.phone}" type="text" name="address" placeholder="Адрес"><br>
-    <input th:field="${pol.graphic}" type="text" name="graphic" placeholder="График работы"><br>
-    <button type="submit">Сохранить изменения</button>
-</form>
+<div th:insert="block/header :: header"></div>
+<main class="main">
+    <div class="wrapper">
+        <form method="post" th:object="${pol}" >
+            <span>Выберите город: </span><br>
+            <select name="selectUpdate" size="1">
+                <option selected th:text="${pol.city.capital}" th:value="${pol.city.id}"></option>
+                <div th:each="city : ${city}">
+                    <option th:value="${city.id}" th:text="${city.capital}"></option>
+                </div>
+            </select><br>
+            <input class="changes" th:field="${pol.name}" type="text" name="name" placeholder="Название поликлиники"><br>
+            <input class="changes" th:field="${pol.address}" type="text" name="year" placeholder="Год открытия"><br>
+            <input class="changes" th:field="${pol.year}" type="text" name="phone" placeholder="Телефон"><br>
+            <input class="changes" th:field="${pol.phone}" type="text" name="address" placeholder="Адрес"><br>
+            <input class="changes" th:field="${pol.graphic}" type="text" name="graphic" placeholder="График работы"><br>
+            <button type="submit" class="change-btn" >Сохранить изменения</button>
+        </form>
+    </div>
+</main>
+<div th:insert="block/footer :: footer"></div>
 </body>
 </html>
+
+<!--<main class="main">-->
+<!--    <div class="wrapper">-->
+<!--        <form th:action="@{/serv}" method="post">-->
+<!--            <span>Выберите Раздел: </span><br>-->
+<!--            <select name="selectServ" size="1">-->
+<!--                <option disabled selected value="">&#45;&#45;&#45;&#45;</option>-->
+<!--                <div th:each="service : ${services}">-->
+<!--                    <option th:value="${service.id}" th:text="${service.title}"></option>-->
+<!--                </div>-->
+<!--            </select><br>-->
+<!--            <input type="text" class="changes" name="name" placeholder="Название услуги"><br>-->
+<!--            <input type="text" class="changes" name="about" placeholder="Об услуге"><br>-->
+<!--            <input type="text" class="changes" name="howItWorks" placeholder="Как оно устроено"><br>-->
+<!--            <input type="submit" class="change-btn" value="Добавить">-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</main>-->

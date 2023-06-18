@@ -1,0 +1,40 @@
+.main{
+    width: 100%;
+    margin: 0 auto;
+}
+.wrapper span{
+    font-size: 20px;
+    color: rgb(55, 55, 202);
+}
+.changes{
+    margin: 20px 0 0;
+    width: 200px;
+    padding: 10px;
+    font-size: 18px;
+    border: rgb(41, 34, 137) 2px solid;
+    border-radius: 5px;
+}
+.change-btn{
+    margin-top: 20px;
+    background-color: rgb(54, 54, 179);
+    padding: 10px 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    border-style: none;
+}
+.change-btn:hover{
+    opacity: 0.8;
+    transition-duration: 0.6s;
+}
+input::placeholder{
+    color:  rgb(77, 77, 201);
+}
+.wrapper{
+    width: 1000px;
+    background-color: rgb(255, 225, 218);
+    margin: 0 auto;
+    height: 100vh;
+    padding: 100px 30px 30px ;
+}

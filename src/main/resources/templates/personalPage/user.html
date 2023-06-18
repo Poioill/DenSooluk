@@ -5,21 +5,13 @@
     <title>Личный кабинет</title>
 </head>
 <body>
-<form action="/user/add" method="post" enctype="multipart/form-data">
-    <!--    <span>Выберите город: </span>-->
-    <!--    <select name="select" size="1">-->
-    <!--        <option disabled selected value="">&#45;&#45;</option>-->
-    <!--        <div th:each="city : ${city}">-->
-    <!--            <option th:value="${city.id}" th:text="${city.capital}"></option>-->
-    <!--        </div>-->
-    <!--    </select>-->
-    <!--    <br>-->
-    <input type="text" name="title" placeholder="Запись блаблабла"><br>
-    <textarea name="description" placeholder="Описание"></textarea><br>
+<p th:text="${user.citizen.name}"></p>
+<div th:each="r : ${user.roles}">
+    <p th:text="${r}"></p>
+</div>
+<form action="/add" method="post" enctype="multipart/form-data">
+    <textarea name="question" placeholder="Ваш вопрос"></textarea><br>
     <button type="submit">Добавить</button>
 </form>
-<div th:each="note : ${notes}">
-    <p th:text="${note.title}"></p>
-</div>
 </body>
 </html>

@@ -1,6 +1,5 @@
-package com.example.denSooluk.Entity.UserModels;
+package com.example.denSooluk.Entity;
 
-import com.example.denSooluk.Entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,16 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class UserNotes {
+public class UserQuestions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
     @Column(columnDefinition = "text")
-    private String description;
+    private String question;
+    @Column(columnDefinition = "text")
+    private String answer;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JoinColumn
-    private User user;
 }

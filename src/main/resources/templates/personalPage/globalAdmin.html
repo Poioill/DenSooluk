@@ -1,163 +1,247 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/global.css}">
-    <title>Admin</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global admin</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/global.css}" />
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous"
+    />
 </head>
 <body>
-<div>
-
-</div>
-<form th:object="${region}" action="/city/add" method="post" enctype="multipart/form-data">
-    <span>Выберите регион: </span>
-    <select name="select" size="1">
-        <option disabled selected value="">--</option>
-        <div th:each="region : ${region}">
-            <option th:value="${region.id}" th:text="${region.name}"></option>
+<div th:insert="block/header :: header"></div>
+<div class="blue-block"></div>
+<main class="main">
+    <section class="personal__page-block">
+        <div class="personal-info__wrapper">
+            <div class="personal-block">
+                <div class="image-block">
+                    <img src="/images/img/main-staff.png" alt="">
+                </div>
+<!--                <h3 class="personal-info__name" th:text="${usr.citizen.name}"></h3>-->
+            </div>
+            <div class="personal-block">
+                <div class="personal-info__block">
+                    <h5 class="personal-title">Должность</h5>
+                    <h6 class="personal-subtitle">Региональный администратор</h6>
+                </div>
+                <div class="personal-info__block">
+                    <h5 class="personal-title">Должность</h5>
+                    <h6 class="personal-subtitle">Региональный администратор</h6>
+                </div>
+            </div>
         </div>
-    </select>
-    <input type="text" name="capital" class="popup__input" placeholder="Name"><br>
-    <button type="submit" class="popup__btn">Добавить</button>
-</form>
-Вот добавленные города
-<div th:each="city : ${city}">
-    Город: <span th:text="${city.capital}"></span> в регионе: <span th:text="${city.region.name}"></span><br>
-</div>
-<br><br><br>
-<hr size="10px">
-<div>
-    <h4>Добавить поликлинку</h4>
-    <form th:object="${city}" action="/polyclinic/add" method="post" enctype="multipart/form-data">
-        <span>Выберите регион: </span>
-        <span>Выберите город: </span>
-        <select name="select" size="1">
-            <option disabled selected value="">--</option>
-            <div th:each="city : ${city}">
-                <option th:value="${city.id}" th:text="${city.capital}"></option>
+        <div class="functionality__wrapper">
+            <div class="func-links  personal-block">
+                <div class="func-flex">
+                    <a href="#pol" class="funk-link">Поликлиники</a><br>
+                    <a href="#serv" class="funk-link">Услуги</a><br>
+                    <a href="#qe" class="funk-link">Вопросы</a>
+                </div>
+                <div class="func-flex">
+                    <a href="#people-list" class="funk-link">Добавить жителя</a><br>
+                    <a href="#addpol" class="funk-link">Добавить поликлинику</a><br>
+                    <a href="#addserv" class="funk-link">Добавить услугу</a><br>
+                    <a href="#add" class="funk-link">Зарегистрировать жителя</a>
+                </div>
             </div>
-        </select>
-        <br>
-        <input  type="text" name="name" class="popup__input" placeholder="Название поликлиники"><br>
-        <input type="text" name="year" class="popup__input" placeholder="Год открытия"><br>
-        <input type="text" name="phone" class="popup__input" placeholder="Телефон"><br>
-        <input type="text" name="address" class="popup__input" placeholder="Адрес"><br>
-        <input type="text" name="graphic" class="popup__input" placeholder="График работы"><br>
-        <button type="submit" class="popup__btn">Добавить</button>
-    </form>
-<br><br><br>
-    Добавленные поликлиники
-    <div th:each="pol : ${pol}">
-        <hr>
-        Поликлиника: <p th:text="${pol.name}"></p>
-        <p th:text="${pol.address}"></p>
-        <p th:text="${pol.year}"></p>
-        <p th:text="${pol.phone}"></p>
-        <p th:text="${pol.graphic}"></p>
-        Область: <p th:text="${pol.city.region.name}"></p>
-        Город: <p th:text="${pol.city.capital}"></p>
-        <a th:href="'/polyclinics/' + ${pol.id} + '/update'">Изменить</a>
-        <form th:action="'/polyclinics/'+${pol.id} + '/delete'" method="post">
-            <input type="submit" value="Удалить"/>
-        </form>
-        <br><hr>
-    </div>
-</div>
-<section>
-    <h3>Жители: </h3>
-    <div th:each="citizen : ${citizens}">
-        <p th:text="${citizen.personalId}"></p>
-        <p th:text="${citizen.birthDate}"></p>
-    </div>
-</section>
+            <div class="func__wrapper">
+                <h3 class="func-title">Поликлиники</h3>
+                <div id="pol" class="func__allPol  personal-block">
+                    <div th:each="pol : ${pol}" class="func__polyclinic j">
+                        <div class="grid">
+                            <h5 th:text="${pol.name}"></h5>
+                            <div class="func__pol-flex">
+                                <div class="pol-flex">
+                                    <p th:text="'Область: ' + ${pol.city.region.name}" class="pol-subtitle"></p>
+                                    <p th:text="'Город: ' + ${pol.city.capital}" class="pol-subtitle"></p>
+                                </div>
+                                <div class="pol-flex">
+                                    <a th:href="'/polyclinics/' + ${pol.id} + '/update'" >Изменить</a>
+                                    <form th:action="'/polyclinics/'+${pol.id} + '/delete'" method="post">
+                                        <input type="submit" class="pol-delete" value="Удалить"/>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<section>
-    Зарегистрировать нового человека-жителя
-    <form th:action="@{/citizen}" method="post">
-        <input type="text" name="personalId" placeholder="PersonalId">
-        <input type="text" name="name" placeholder="Name">
-        <input type="text" name="lastName" placeholder="Last Name">
-        <select name="selectGender" size="1">
-            <option value="" disabled selected>Выберите пол</option>
-            <option value="Man">М</option>
-            <option value="Woman">Ж</option>
-        </select>
-        <input type="text" name="birthPlace" placeholder="Birth Place"/>
-        Выберите дату рождения:
-        <input type="date" name="birthDate"/>
-        <input type="submit" value="Добавить">
-    </form>
-</section>
-<section>
-    Зарегистрировать жителя в системе
-    <form th:action="@{/registration}" method="post">
-        <select name="personalId" size="1">
-            <option disabled selected value="">Выберите id</option>
-            <div th:each="citizen : ${citizens}">
-                <option th:value="${citizen.personalId}" th:text="${citizen.personalId}"></option>
+            <div id="serv" class="func__wrapper">
+                <div class="polyclinic">
+                    <div class="greenElipse">
+                        <div class="title">
+                            <h3 class="func-title">Услуги</h3>
+                        </div>
+                    </div>
+                    <div  class="func__allPol  personal-block">
+                        <div class="service" th:each="serv : ${services}">
+                            <div class="d-flex">
+                                <div class="dropdown">
+                                    <button
+                                            class="btn a btn-secondary dropdown-toggle"
+                                            type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                    >
+                                        <div class="a d-flex">
+                                            <h5 th:text="${serv.title}"></h5>
+                                            <img
+                                                    class="arrow-down"
+                                                    src="/images/svg/arrow-service.svg"
+                                                    alt=""
+                                            />
+                                        </div>
+                                    </button>
+                                    <div th:each="se : ${serv.servicesMeds}" class="dropdown-menu"
+                                            aria-labelledby="dropdownMenuButton">
+                                        <a th:text="${se.name}"
+                                                class="dropdown-item"
+                                                th:href="'/serv/' + ${se.id}"
+                                        ></a
+                                        >
+                                        <div class="service-box">
+                                            <form th:action="'/serv/'+${se.id} + '/delete'" method="post">
+                                            <input class="delete" type="submit" value="Удалить"/>
+                                        </form>
+                                            <a th:href="'/serv/' + ${se.id} + '/update'">Изменить</a>
+                                        </div>
+
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </select>
-        <input type="password" name="password" placeholder="Password">
-        <select id="selectRole" name="selectRole" size="1" onchange="showExtraField()">
-            <option disabled selected value="">Выберите роль</option>
-            <div th:each="role : ${roles}">
-                <option th:value="${role}" th:text="${role}"></option>
+            <div id="people-list" class="func__wrapper">
+                <h3 class="func-title">Добавить жителя</h3>
+                <div  class="func__allPol  personal-block">
+                    <form class="poly-select" th:action="@{/citizen}" method="post">
+                        <input type="text" class="poly-add" name="personalId" placeholder="PersonalId">
+                        <input type="text" name="name" class="poly-add" placeholder="Name">
+                        <input type="text" name="lastName" class="poly-add" placeholder="Last Name"><br>
+                        <input type="text" class="poly-add" name="birthPlace" placeholder="Место рождения"/>
+                        <span>Выберите пол: </span>
+                        <select class="poly-selected" name="selectGender" size="1">
+                            <option value="" disabled selected >-------</option>
+                            <option value="Man">М</option>
+                            <option value="Woman">Ж</option>
+                        </select>
+                        Выберите дату рождения:
+                        <input type="date" class="poly-add" name="birthDate"/><br>
+                        <input type="submit"class="poly-button" value="Добавить">
+                    </form>
+                </div>
             </div>
-        </select>
-        <div id="extraField"></div>
-        <script>
-            function showExtraField() {
-              var role = document.getElementById("selectRole").value;
-              if (role == "STAFF") {
-                document.getElementById("extraField").innerHTML = '<input type="text"  name="extraField" name="job" placeholder="Работа"/>';
-              }
-            }
-        </script>
-        <input type="submit" value="Register">
-    </form>
-</section>
-<section>
-    <h3>Добавить Раздел Услуг</h3>
-    <form th:action="@{/services}" method="post">
-        <input type="text" name="title" placeholder="Название раздела">
-        <input type="submit" value="Добавить">
-    </form>
-    <div th:each="service : ${services}">
-        <p th:text="${service.title}"></p>
-        <a th:href="'/services/' + ${service.id} + '/update'">Изменить</a>
-        <form th:action="'/services/'+${service.id} + '/delete'" method="post">
-            <input type="submit" value="Удалить"/>
-        </form>
-    </div>
-    <h3>Добавить Услуги</h3>
-    <form th:action="@{/serv}" method="post">
-        <span>Выберите Раздел: </span>
-        <select name="selectServ" size="1">
-            <option disabled selected value="">----</option>
-            <div th:each="service : ${services}">
-                <option th:value="${service.id}" th:text="${service.title}"></option>
+            <div id="addpol" class="func__wrapper">
+                <h3 class="func-title">Добавить поликлинику</h3>
+                <div  class="func__allPol  personal-block">
+                    <form class="poly-select" th:object="${city}" action="/polyclinic/add" method="post" enctype="multipart/form-data">
+                        <span>Выберите город: </span>
+                        <select name="select" size="1">
+                            <option disabled selected value="">-----</option>
+                            <div th:each="city : ${city}">
+                                <option th:value="${city.id}" th:text="${city.capital}"></option>
+                            </div>
+                        </select>
+                        <br>
+                        <input  type="text" name="name" class="poly-add" placeholder="Название поликлиники">
+                        <input type="text" name="year" class="poly-add" placeholder="Год открытия">
+                        <input type="text" name="phone" class="poly-add" placeholder="Телефон"><br>
+                        <input type="text" name="address" class="poly-add" placeholder="Адрес">
+                        <input type="text" name="graphic" class="poly-add" placeholder="График работы"><br>
+                        <button type="submit" class="poly-button">Добавить</button>
+                    </form>
+                </div>
             </div>
-        </select>
-        <input type="text" name="name" placeholder="Название услуги">
-        <input type="text" name="about" placeholder="Об услуге">
-        <input type="text" name="howItWorks" placeholder="Как оно устроено">
-        <input type="submit" value="Добавить">
-    </form>
-    <div th:each="serv : ${serv}">
-        <p th:text="${serv.name}"></p>
-        <p th:text="${serv.howItWorks}"></p>
-        <a th:href="'/serv/' + ${serv.id} + '/update'">Изменить</a>
-        <form th:action="'/serv/'+${serv.id} + '/delete'" method="post">
-            <input type="submit" value="Удалить"/>
-        </form>
-    </div>
-</section>
-<!--  else if (roleId == 2) {-->
-<!--    document.getElementById("extraField").innerHTML = '<input type="text" name="otherExtraField" />';-->
-<!--  }-->
-<!--  else {-->
-<!--    document.getElementById("extraField").innerHTML = '';-->
-<!--  }-->
-<br><br><br><br><br>
+
+            <div id="addserv" class="func__wrapper">
+                <h3 class="func-title">Добавить услугу</h3>
+                <div  class="func__allPol  personal-block">
+                    <form class="poly-select" th:action="@{/serv}" method="post">
+                        <span>Выберите Раздел: </span>
+                        <select name="selectServ" size="1">
+                            <option disabled selected value="">-------</option>
+                            <div th:each="service : ${services}">
+                                <option th:value="${service.id}" th:text="${service.title}"></option>
+                            </div>
+                        </select><br>
+                        <input type="text" class="poly-add" name="name" placeholder="Название услуги">
+                        <input type="text" class="poly-add" name="about" placeholder="Об услуге">
+                        <input type="text" class="poly-add" name="howItWorks" placeholder="Как оно устроено"><br>
+                        <input type="submit" class="poly-button" value="Добавить">
+                    </form>
+                </div>
+            </div>
+
+            <div id="add" class="func__wrapper">
+                <h3 class="func-title">Зарегистрировать жителя</h3>
+                <div  class="func__allPol  personal-block">
+                    <form class="poly-select" th:action="@{/registration}" method="post">
+                        <span>Выберите Id: </span>
+                        <select name="personalId" size="1">
+                            <option disabled selected value="">------</option>
+                            <div th:each="citizen : ${citizens}">
+                                <option th:value="${citizen.personalId}" th:text="${citizen.personalId}"></option>
+                            </div>
+                        </select><br>
+                        <input class="poly-add" type="password" name="password" placeholder="Password"><br><br>
+                        <span>Выберите роль: </span>
+                        <select name="selectRole" size="1">
+                            <option disabled selected value="">-----</option>
+                            <div th:each="role : ${roles}">
+                                <option th:value="${role}" th:text="${role}"></option>
+                            </div>
+                        </select>
+<!--                        <div id="extraField"></div>-->
+<!--                        <script>-->
+<!--            function showExtraField() {-->
+<!--              var role = document.getElementById("selectRole").value;-->
+<!--              if (role == "STAFF") {-->
+<!--                document.getElementById("extraField").innerHTML = '<input class="poly-add" type="text"  name="job" placeholder="Работа"/>';-->
+<!--              }-->
+<!--            }-->
+<!--        </script>-->
+                        <br>
+                        <input class="poly-button" type="submit" value="Зарегистрировать">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+<br><br><br><br><br><br><br>
+<div th:insert="block/footer :: footer"></div>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+></script>
 </body>
 </html>

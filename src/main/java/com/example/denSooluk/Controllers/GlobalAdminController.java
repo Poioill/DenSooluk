@@ -27,6 +27,7 @@ public class GlobalAdminController {
     private final CitizenService citizenService;
     private final ServicesMedService servicesMedService;
     private final ServicesItemsService servicesItemsService;
+    private final UserQuestionsService userQuestionsService;
 
     @GetMapping("/admin")
     public String adminPage(@AuthenticationPrincipal User user, Model model) {
@@ -44,6 +45,7 @@ public class GlobalAdminController {
         model.addAttribute("roles", roles);
         model.addAttribute("users", userService.list());
         model.addAttribute("usr", user);
+        model.addAttribute("questions", userQuestionsService.allUserQuestions());
         return "personalPage/globalAdmin";
     }
 

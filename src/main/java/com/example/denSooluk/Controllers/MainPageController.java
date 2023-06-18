@@ -1,6 +1,7 @@
 package com.example.denSooluk.Controllers;
 
 import com.example.denSooluk.Repositories.*;
+import com.example.denSooluk.Services.UserQuestionsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ public class MainPageController {
     private final PersonalCabRepo personalCabRepo;
     private final FeedbackRepo feedbackRepo;
     private final MoreOpportunityRepo moreOpportunityRepo;
+    private final UserQuestionsService userQuestionsService;
 
     @GetMapping("/")
     public String hello(Model model) {
@@ -25,5 +27,11 @@ public class MainPageController {
         model.addAttribute("feedback", feedbackRepo.findAll());
         model.addAttribute("opportunity", moreOpportunityRepo.findAll());
         return "home";
+    }
+
+    @GetMapping("/questions")
+    public String answers(Model model){
+        model.addAttribute("answer", userQuestionsService.allUserQuestions());
+        return "answer";
     }
 }
