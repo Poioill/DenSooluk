@@ -2,20 +2,29 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/update.css}">
+    <title>Изменить данные</title>
 </head>
 <body>
+<div th:insert="block/header :: header"></div>
+<main class="main">
+    <div class="wrapper">
 <form method="post" th:object="${services}" enctype="multipart/form-data">
+    <span>Выберите Раздел: </span><br>
     <select name="selectServ" size="1">
         <option selected th:text="${services.servicesItems.title}" th:value="${services.servicesItems.id}"></option>
         <div th:each="s : ${servItems}">
             <option th:value="${s.id}" th:text="${s.title}"></option>
         </div>
-    </select>
-    <input th:field="${services.name}" type="text" name="name" placeholder="Название раздела">
-    <input th:field="${services.about}" type="text" name="about" placeholder="Название раздела">
-    <input th:field="${services.howItWorks}" type="text" name="howItWorks" placeholder="Название раздела">
-    <button type="submit">Сохранить изменения</button>
+    </select><br>
+    <input th:field="${services.name}" type="text" class="changes" name="name" placeholder="Название услуги">
+    <input th:field="${services.about}" class="changes" name="about" placeholder="Об услуге">
+    <input th:field="${services.howItWorks}" type="text" class="changes" name="howItWorks" placeholder="Как оно устроено">
+    <input type="submit" class="change-btn" >Сохранить изменения</input>
 </form>
+    </div>
+</main>
+<div th:insert="block/footer :: footer"></div>
 </body>
 </html>

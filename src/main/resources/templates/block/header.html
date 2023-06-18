@@ -6,18 +6,18 @@
             <img src="/images/svg/logo.svg" alt="logo" />
         </a>
         <div class="d-flex">
-            <a href="">Нужна помощь?</a>
-            <a href="">Онлайн консультация</a>
+            <a href="https://t.me/kyrgyzpolyclinicbot">Нужна помощь?</a>
+            <a href="https://t.me/kyrgyzpolyclinicbot">Онлайн консультация</a>
         </div>
     </div>
     <div class="header__right d-flex">
         <a href="/">Главная</a>
         <a href="/polyclinics">Поликлиники</a>
         <a href="/services">Услуги</a>
-        <a sec:authorize="hasAuthority('ADMIN')" href="/admin">Личный кабинет</a>
+        <a sec:authorize="hasAuthority('ADMIN')" href="/admin">Админ Панель</a>
         <a sec:authorize="hasAuthority('USER')" th:href="'/user/' + ${currentUser.id}">Личный кабинет</a>
-        <a sec:authorize="hasAuthority('RECEPTIONIST')" href="/reception">Личный кабинет</a>
-        <a sec:authorize="hasAuthority('STAFF')" href="/staff">Личный кабинет</a>
+<!--        <a sec:authorize="hasAuthority('RECEPTIONIST')" href="/reception">Личный кабинет</a>-->
+<!--        <a sec:authorize="hasAuthority('STAFF')" href="/staff">Личный кабинет</a>-->
         <span sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" method="post">
                 <input class="logout" type="submit" value="Выйти"/>
